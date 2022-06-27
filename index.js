@@ -23,7 +23,7 @@ app.use('/api/pokemon', require('./routes/pokemon.route'));
 app.use(errorHandler);
 
 db.sequelize.sync().then(() => {
-  app.listen(4000, () => {
-    console.log('App is listening on http://localhost:4000');
+  app.listen(process.env.PORT || 5000, () => {
+    console.log(`App is listening on http://localhost:${process.env.PORT || 5000}`);
   });
 });
