@@ -16,7 +16,17 @@ module.exports = (sequelize, DataTypes) => {
     details: {
       type: DataTypes.JSON,
       allowNull: false,
+      get: function () {
+        return JSON.parse(this.getDataValue('value'));
+      },
+      set: function () {
+        return this.setDataValue('value', JSON.stringify(value));
+      },
     },
+    // details: {
+    //   type: DataTypes.JSON,
+    //   allowNull: false,
+    // },
   });
 
   return Pokemon;
