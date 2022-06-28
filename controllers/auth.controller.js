@@ -70,6 +70,8 @@ const sendToken = (user, statusCode, res) => {
     expiresIn: '30d',
   });
 
+  console.log('%c%s', 'color: #00258c', token);
+
   const options = {
     maxAge: 30 * 24 * 60 * 60 * 1000,
     secure: process.env.NODE_ENV === 'production',
@@ -78,6 +80,11 @@ const sendToken = (user, statusCode, res) => {
 
   res.cookie(process.env.ACCESS_TOKEN_NAME, token, options);
 
+  console.log(
+    '%c%s',
+    'color: #994d75',
+    `  res.cookie(process.env.ACCESS_TOKEN_NAME, token, options);  `,
+  );
   user.password = null;
 
   res.status(statusCode).json({
