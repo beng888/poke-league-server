@@ -17,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
       get: function () {
-        return JSON.parse(this.getDataValue('value'));
+        return JSON.parse(this.getDataValue('details'));
       },
-      set: function () {
-        return this.setDataValue('value', JSON.stringify(value));
+      set: function (value) {
+        return this.setDataValue('details', JSON.stringify(value));
       },
     },
     // details: {
