@@ -4,7 +4,6 @@ const argon2 = require('argon2');
 const { sign, verify } = require('jsonwebtoken');
 
 const registerUser = asyncHandler(async (req, res) => {
-  console.log('%c⧭', 'color: #408059', 'registerUser', req);
   const { username, password, confirmPassword } = req.body;
 
   if (!username || !password || !confirmPassword) {
@@ -12,20 +11,23 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error('Please add all fields');
   }
 
+  console.log('%c%s', 'color: #99adcc', ` throw new Error('Please add all fields');`);
   if (password !== confirmPassword) {
     res.status(400);
     throw new Error(`Passwords don't match`);
   }
-
+  console.log(`throw new Error('Passwords don't match);`);
   const userExists = await User.findOne({ where: { username: username } });
   if (userExists) {
     res.status(400);
     throw new Error('User already exists');
   }
 
+  console.log('%c%s', 'color: #f279ca', `    throw new Error('User already exists');`);
   const hash = await argon2.hash(password);
   const user = await User.create({ username, password: hash });
 
+  console.log('%c⧭', 'color: #00ff88', '**********************user******************', user);
   if (user) {
     sendToken(user, 201, res);
   } else {
