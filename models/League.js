@@ -25,13 +25,6 @@ module.exports = (sequelize, DataTypes) => {
     date: {
       type: DataTypes.DATE,
       allowNull: false,
-      validate: {
-        customValidator(value) {
-          if (new Date(value) < new Date()) {
-            throw new Error('must be date in the future');
-          }
-        },
-      },
     },
     requiredSlots: {
       type: DataTypes.INTEGER,
