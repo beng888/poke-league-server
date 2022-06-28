@@ -24,11 +24,7 @@ app.use(errorHandler);
 
 db.sequelize
   .sync()
-  .then(() => {
-    app.listen(process.env.PORT || 4000, () => {
-      console.log(`Server is running on port ${process.env.PORT || 4000}`);
-    });
-  })
+  .then(() => app.listen(process.env.PORT))
   .catch((err) => {
     console.log(err);
   });
