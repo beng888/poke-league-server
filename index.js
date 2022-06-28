@@ -4,7 +4,13 @@ const cors = require('cors');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
 
-app.use(cors({ credentials: true, origin: 'https://poke-league-client.vercel.app/' }));
+const corsOptions = {
+  origin: true,
+  credentials: true,
+};
+app.options('*', cors(corsOptions));
+
+app.use(cors({ credentials: true, origin: process.env.ORIGIN_URL }));
 app.use(express.json());
 app.use(cookieParser());
 
