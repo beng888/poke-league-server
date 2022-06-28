@@ -90,11 +90,6 @@ const sendToken = (user, statusCode, res) => {
     `  res.cookie(process.env.ACCESS_TOKEN_NAME, token, options);  `,
   );
 
-  console.log('%c%s', 'color: #eeff00', 'user', user);
-
-  console.log('%c⧭', 'color: #73998c', 'statusCode', statusCode);
-
-  console.log('%c⧭', 'color: #514080', 'res', res);
   user.password = null;
 
   res.json({

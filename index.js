@@ -11,6 +11,8 @@ const corsOptions = {
 app.options('*', cors(corsOptions));
 
 app.use(cors({ credentials: true, origin: process.env.ORIGIN_URL }));
+
+console.log('%c⧭', 'color: #8c0038', 'process.env.ORIGIN_URL', process.env.ORIGIN_URL);
 app.use(express.json());
 app.use(cookieParser());
 
