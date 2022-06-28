@@ -4,19 +4,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: { len: [3, 20] },
-      unique: {
-        args: true,
-        msg: 'team name already taken',
-      },
-    },
-    slots: {
-      type: DataTypes.JSON,
-      allowNull: false,
-    },
   });
 
   return Team;
