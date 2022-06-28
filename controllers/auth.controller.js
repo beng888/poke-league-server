@@ -69,7 +69,7 @@ const sendToken = (user, statusCode, res) => {
 
   const options = {
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    secure: process.env.NODE_ENV === 'prodution',
+    secure: process.env.NODE_ENV === 'production',
     httpOnly: process.env.NODE_ENV === 'production',
   };
 
