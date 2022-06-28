@@ -3,8 +3,6 @@ const asyncHandler = require('express-async-handler');
 const { User } = require('../models');
 
 const protect = asyncHandler(async (req, res, next) => {
-  console.log('%c⧭', 'color: #408059', 'protect', req);
-
   const accessToken = req.cookies[process.env.ACCESS_TOKEN_NAME];
 
   if (!accessToken) {
