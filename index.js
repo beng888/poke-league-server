@@ -8,9 +8,9 @@ const corsOptions = {
   origin: process.env.ORIGIN_URL,
   credentials: true,
 };
+app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
