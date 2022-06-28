@@ -91,7 +91,7 @@ const sendToken = (user, statusCode, res) => {
   );
   user.password = null;
 
-  res.status(statusCode).json({
+  res.json({
     status: 'success',
     token,
     user,
