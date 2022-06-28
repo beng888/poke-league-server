@@ -1,5 +1,4 @@
 const errorHandler = (err, req, res, next) => {
-  console.log('%c⧭', 'color: #ffa280', 'ERRORHANDLER', req);
   console.log('%c⧭', 'color: #ffa280', 'ERRORHANDLER-ERROR', err);
   const validationError = `Validation error:`;
   const notNullError = `notNull Violation:`;
