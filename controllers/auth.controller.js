@@ -25,6 +25,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   console.log('%c%s', 'color: #f279ca', `    throw new Error('User already exists');`);
   const hash = await argon2.hash(password);
+  console.log('%c⧭', 'color: #e5de73', '**********************hash******************', hash);
   const user = await User.create({ username, password: hash });
 
   console.log('%c⧭', 'color: #00ff88', '**********************user******************', user);
