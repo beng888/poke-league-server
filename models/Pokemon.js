@@ -13,10 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    details: {
-      type: DataTypes.JSON,
-      allowNull: false,
-    },
   });
 
   return Pokemon;
