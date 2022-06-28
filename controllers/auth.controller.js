@@ -4,6 +4,7 @@ const argon2 = require('argon2');
 const { sign, verify } = require('jsonwebtoken');
 
 const registerUser = asyncHandler(async (req, res) => {
+  console.log('%c⧭', 'color: #408059', 'registerUser', req);
   const { username, password, confirmPassword } = req.body;
 
   if (!username || !password || !confirmPassword) {
