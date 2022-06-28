@@ -66,6 +66,7 @@ const logoutUser = async (req, res) => {
 const revalidateUser = async (req, res) => sendToken(req.user, 200, res);
 
 const sendToken = (user, statusCode, res) => {
+  console.log('%c%s', 'color: #7f2200', `const sendToken = (user, statusCode, res) => {`);
   const token = sign({ username: user.username, id: user.id }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: '30d',
   });
