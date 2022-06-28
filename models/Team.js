@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     slots: {
-      type: DataTypes.JSON,
+      type: DataTypes.TEXT,
       allowNull: false,
       get: function () {
         return JSON.parse(this.getDataValue('slots'));

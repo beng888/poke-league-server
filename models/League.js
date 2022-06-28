@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const League = sequelize.define('League', {
     owner: {
-      type: DataTypes.JSON,
+      type: DataTypes.TEXT,
       allowNull: false,
       get: function () {
         return JSON.parse(this.getDataValue('owner'));
