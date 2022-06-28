@@ -32,6 +32,7 @@ const registerUser = asyncHandler(async (req, res) => {
   if (user) {
     sendToken(user, 201, res);
   } else {
+    console.log('%c⧭', 'color: #364cd9', `    throw new Error('Invalid user data');    `);
     res.status(400);
     throw new Error('Invalid user data');
   }
@@ -50,6 +51,7 @@ const loginUser = asyncHandler(async (req, res) => {
   if (user && (await argon2.verify(user.password, password))) {
     sendToken(user, 200, res);
   } else {
+    console.log('%c%s', 'color: #33cc99', `    throw new Error('Invalid credentials');    `);
     res.status(400);
     throw new Error('Invalid credentials');
   }
