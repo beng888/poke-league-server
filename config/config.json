@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "G@ramboody1",
-    "database": "pokeleaguedb",
-    "host": "localhost",
+  "username": "root",
+    "password": null,
+    "database": "develop",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
