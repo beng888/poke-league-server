@@ -54,7 +54,7 @@ const loginUser = asyncHandler(async (req, res) => {
 const logoutUser = async (req, res) => {
   res.clearCookie(process.env.ACCESS_TOKEN_NAME, {
     httpOnly: true,
-    sameSite: 'None',
+    sameSite: 'none',
     secure: true,
   });
   res.send('Successfully logged out!');
@@ -69,6 +69,7 @@ const sendToken = (user, statusCode, res) => {
 
   const options = {
     maxAge: 30 * 24 * 60 * 60 * 1000,
+    sameSite: 'none',
     secure: process.env.NODE_ENV === 'production',
     httpOnly: process.env.NODE_ENV === 'production',
   };
