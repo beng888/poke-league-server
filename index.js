@@ -4,7 +4,16 @@ const cors = require('cors');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
 
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+// const corsOptions = {
+//   origin: true,
+//   credentials: true,
+// };
+// app.options('*', cors(corsOptions));
+
+app.set('trust proxy', 1);
+
+app.use(cors({ credentials: true, origin: process.env.ORIGIN_URL }));
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -22,13 +31,15 @@ app.use('/api/pokemon', require('./routes/pokemon.route'));
 
 app.use(errorHandler);
 
+const PORT = process.env.PORT || 4000;
+
 db.sequelize
   .sync()
   .then(() => {
-    app.listen(process.env.PORT || 4000, () => {
-      console.log(`Server is running on port ${process.env.PORT || 4000}`);
+    app.listen(PORT, () => {
+      // console.log(`Server is running on port ${PORT}`);
     });
   })
   .catch((err) => {
-    console.log(err);
+    // console.log(err);
   });

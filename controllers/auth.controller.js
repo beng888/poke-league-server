@@ -60,7 +60,9 @@ const logoutUser = async (req, res) => {
   res.send('Successfully logged out!');
 };
 
-const revalidateUser = async (req, res) => sendToken(req.user, 200, res);
+const revalidateUser = async (req, res) => {
+  sendToken(req.user, 200, res);
+};
 
 const sendToken = (user, statusCode, res) => {
   const token = sign({ username: user.username, id: user.id }, process.env.ACCESS_TOKEN_SECRET, {
@@ -69,7 +71,8 @@ const sendToken = (user, statusCode, res) => {
 
   const options = {
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    secure: process.env.NODE_ENV === 'prodution',
+    sameSite: 'None',
+    secure: process.env.NODE_ENV === 'production',
     httpOnly: process.env.NODE_ENV === 'production',
   };
 

@@ -14,9 +14,19 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     details: {
-      type: DataTypes.JSON,
+      type: DataTypes.TEXT,
       allowNull: false,
+      get: function () {
+        return JSON.parse(this.getDataValue('details'));
+      },
+      set: function (value) {
+        return this.setDataValue('details', JSON.stringify(value));
+      },
     },
+    // details: {
+    //   type: DataTypes.JSON,
+    //   allowNull: false,
+    // },
   });
 
   return Pokemon;

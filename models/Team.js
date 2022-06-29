@@ -13,10 +13,24 @@ module.exports = (sequelize, DataTypes) => {
         msg: 'team name already taken',
       },
     },
-    slots: {
-      type: DataTypes.JSON,
+    totalStats: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
+    slots: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      get: function () {
+        return JSON.parse(this.getDataValue('slots'));
+      },
+      set: function (value) {
+        return this.setDataValue('slots', JSON.stringify(value));
+      },
+    },
+    // slots: {
+    //   type: DataTypes.JSON,
+    //   allowNull: false,
+    // },
   });
 
   return Team;

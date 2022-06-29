@@ -9,15 +9,13 @@ const errorHandler = (err, req, res, next) => {
     return res.statusCode ? res.statusCode : 500;
   };
 
-  res.status(getStatusCode());
-
   const getErrorMessage = () => {
     if (isValidationError) return err.message.split(validationError)[1];
     if (isNotNullError) return err.message.split(notNullError)[1];
     return err.message;
   };
 
-  res.json({
+  res.status(500).json({
     message: getErrorMessage(),
     stack: process.env.NODE_ENV === 'production' ? null : err.stack,
   });
