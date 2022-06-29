@@ -15,9 +15,7 @@ const errorHandler = (err, req, res, next) => {
     return err.message;
   };
 
-  console.log('%c⧭', 'color: #cc7033', 'getStatusCode ========>', getStatusCode());
-
-  res.status(getStatusCode()).json({
+  res.status(500).json({
     message: getErrorMessage(),
     stack: process.env.NODE_ENV === 'production' ? null : err.stack,
   });

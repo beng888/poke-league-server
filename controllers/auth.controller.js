@@ -61,7 +61,6 @@ const logoutUser = async (req, res) => {
 };
 
 const revalidateUser = async (req, res) => {
-  console.log('%c⧭', 'color: #f27999');
   sendToken(req.user, 200, res);
 };
 

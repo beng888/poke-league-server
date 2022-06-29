@@ -4,7 +4,6 @@ const { User } = require('../models');
 
 const protect = asyncHandler(async (req, res, next) => {
   const accessToken = req.cookies[process.env.ACCESS_TOKEN_NAME];
-  console.log('%c⧭', 'color: #5200cc', 'accessToken -------------->', accessToken);
 
   if (!accessToken) {
     res.status(400);
