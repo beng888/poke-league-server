@@ -10,6 +10,8 @@ const cookieParser = require('cookie-parser');
 // };
 // app.options('*', cors(corsOptions));
 
+app.set('trust proxy', 1);
+
 app.use(cors({ credentials: true, origin: process.env.ORIGIN_URL }));
 
 app.use(express.json());
